@@ -7,12 +7,15 @@ Course Name: הנדסאי תוכנה סייבר אריאל
 * I open a new CMD, and writing '''mongo'''.
 
 
-1. '''
+1. 
+'''
 use mongo_practice
 switched to db mongo_practice
 '''
 
-2. '''
+
+2. 
+'''
 db.createCollection("movies")
 { "ok" : 1 }
 '''
@@ -84,7 +87,9 @@ BulkWriteResult({
         "upserted" : [ ]
 '''
 
-3. '''
+
+3. 
+'''
 db.movies.find().pretty()
 {
         "_id" : ObjectId("5c3d8a560aa627cb6d01ae8a"),
@@ -148,7 +153,9 @@ db.movies.find().pretty()
 }
 '''
 
-4. '''
+
+4. 
+'''
 db.movies.find({"writer":"Quentin Tarantino"}).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9371"),
@@ -173,7 +180,9 @@ db.movies.find({"writer":"Quentin Tarantino"}).pretty()
 }
 '''
 
-5. '''
+
+5.
+'''
 db.movies.find({"actors":"Brad Pitt"}).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9370"),
@@ -198,7 +207,9 @@ db.movies.find({"actors":"Brad Pitt"}).pretty()
 }
 '''
 
-6. '''
+
+6.
+'''
 db.movies.find({"franchise":"The Hobbit"}).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9373"),
@@ -224,7 +235,9 @@ db.movies.find({"franchise":"The Hobbit"}).pretty()
 }
 '''
 
-7. '''
+
+7.
+'''
     db.movies.find({$and :[{"year":{$gt:1900}},{"year":{$lte:1999}}]}).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9370"),
@@ -248,7 +261,9 @@ db.movies.find({"franchise":"The Hobbit"}).pretty()
 }
 '''
 
-8. '''
+
+8. 
+'''
 db.movies.find({$or :[{"year":{$gte:2000}},{"year":{$lte:1989}}]}).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9372"),
@@ -285,23 +300,30 @@ db.movies.find({$or :[{"year":{$gte:2000}},{"year":{$lte:1989}}]}).pretty()
 }
 '''
 
-9. '''
+
+9.
+'''
 db.movies.update({"title" : "The Hobbit: An Unexpected Journey"},{$set: {"synopsis" :"A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug.",}})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 '''
 
-10. '''
+
+10.
+'''
 db.movies.update({"title" : "The Hobbit: The Desolation of Smaug"},{$set: {"synopsis" :"The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring.",}})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 '''
 
-11. '''
+
+11. 
+'''
 db.movies.update({"title" : "Pulp Fiction"},{$push: {"actors" :"Samuel L. Jackson",}})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 '''
 
-3
-12. '''
+
+12. 
+'''
 db.movies.createIndex( { synopsis: "text" } )
 {
         "createdCollectionAutomatically" : false,
@@ -338,7 +360,9 @@ db.movies.find( { $text: { $search: "Bilbo" } } ).pretty()
 }
 '''
 
-13. '''
+
+13. 
+'''
 db.movies.find( { $text: { $search: "Gandalf" } } ).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9374"),
@@ -350,7 +374,9 @@ db.movies.find( { $text: { $search: "Gandalf" } } ).pretty()
 }
 '''
 
-14. '''
+
+14.
+'''
 db.movies.find( { $text: { $search: "Bilbo -Gandalf" } } ).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9375"),
@@ -370,7 +396,9 @@ db.movies.find( { $text: { $search: "Bilbo -Gandalf" } } ).pretty()
 }
 '''
 
-15. '''
+
+15.
+'''
 db.movies.find( { $text: { $search: "Bilbo Dwardes" } } ).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9374"),
@@ -398,7 +426,9 @@ db.movies.find( { $text: { $search: "Bilbo Dwardes" } } ).pretty()
 }
 '''
 
-16. '''
+
+16. 
+'''
 db.movies.find( { $text: { $search: "gold dragon" } } ).pretty()
 {
         "_id" : ObjectId("5c3df4ad9975314297af9373"),
@@ -410,12 +440,16 @@ db.movies.find( { $text: { $search: "gold dragon" } } ).pretty()
 }
 '''
 
-17. '''
+
+17. 
+'''
 db.movies.remove({"title":"Pee Wee Herman's Big Adventure"})
 WriteResult({ "nRemoved" : 1 })
 '''
 
-18. '''
+
+18. 
+'''
 db.movies.remove({"title":"Avatar"})
 WriteResult({ "nRemoved" : 1 })
 '''
